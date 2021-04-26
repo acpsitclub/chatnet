@@ -7,7 +7,7 @@
 #include <string.h>
 #include "./libserver.h"
 
-#define PORT 8088
+
 
 //htons = host to network (short integer)
 //SOCK_STREAM = for tcp sockets
@@ -27,7 +27,7 @@ int main(int argc, const char *argv[]) {
 
 	
 	//----text ip address into binary
-	inet_pton(server.sin_family, "10.100.102.51", &server.sin_addr);
+	inet_pton(server.sin_family, IPADDR, &server.sin_addr);
 
 	
 	//----connect

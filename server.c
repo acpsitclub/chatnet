@@ -7,7 +7,6 @@
 #include <fcntl.h>
 #include "./libserver.h"
 
-#define PORT 8088
 
 int main(int argc, char *argv[]) {
 	//----Creating socket file des

@@ -47,7 +47,7 @@ int main(int argc, const char *argv[]) {
 	FD_SET(sockfd, &fdset);
 	select(sockfd + 1, NULL, &fdset, NULL, &tv);
 	while (1) {
-		printf("\033[0;32m" "[client] " "\033[0m");
+		printf("\033[0;32m" "[muhammad] " "\033[0m");
 		//char *hello = (char*)malloc(1000);
 		char hello[1024] = {0};
 		fgets(hello, sizeof(hello), stdin);
@@ -56,7 +56,7 @@ int main(int argc, const char *argv[]) {
 		//--reading response
 		char buffer[1024] = {0};
 		read(sockfd, buffer, 1024);
-		printf("\033[0;34m[server]\033[0m " "%s", buffer);
+		printf("\033[0;34m[abdullah]\033[0m " "%s", buffer);
 	}
 	return 0;
 }

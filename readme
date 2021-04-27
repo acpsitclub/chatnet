@@ -1,2 +1,8 @@
 A minimalist implementation of a realtime chat between a server & client -- at the terminal.
-for i in {1..4}; do d c client.c ; done
+
+
+To start the server, execute in terminal:
+    $ ./server
+    $ ./server-clang-aarch64  //for termux or android
+To send & receive 7 messages, execute in terminal:
+    $ for i in {1..7}; do ./client; done

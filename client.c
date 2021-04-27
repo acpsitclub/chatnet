@@ -38,7 +38,6 @@ int main(int argc, const char *argv[]) {
 	//so don't
 	struct timeval tv;
 	tv.tv_sec = 0;
-
 	int connection = connect(sockfd, (struct sockaddr *)&server, sizeof(server));
 	if (connection < 0) {perror(err "Bind failed\n"); return -1;}
 	//--timeout select
@@ -46,17 +45,21 @@ int main(int argc, const char *argv[]) {
 	FD_ZERO(&fdset);
 	FD_SET(sockfd, &fdset);
 	select(sockfd + 1, NULL, &fdset, NULL, &tv);
-	while (1) {
-		printf("\033[0;32m" "[muhammad] " "\033[0m");
-		//char *hello = (char*)malloc(1000);
+
+
+	//while (1) {
+		//--sending message
+		printf("\033[0;32m[client]\033[0m ");
 		char hello[1024] = {0};
+		char exitmsg[] = "!exit\n";
 		fgets(hello, sizeof(hello), stdin);
+		if (strcmp(hello, exitmsg)==0) {printf("----Exited----\n"); return 0;}
 		send(sockfd, hello, sizeof(hello), 0);
 		
 		//--reading response
 		char buffer[1024] = {0};
 		read(sockfd, buffer, 1024);
-		printf("\033[0;34m[abdullah]\033[0m " "%s", buffer);
-	}
+		printf("\033[0;34m[server]\033[0m %s", buffer);
+	//}
 	return 0;
 }

@@ -28,7 +28,8 @@ int main(int argc, char *argv[]) {
 	server.sin_port = htons(PORT);
 	int bindret = bind(serverfd, (struct sockaddr *)&server, sizeof(server));
 	if (bindret != 0) {perror(err "Socket bind error\n"); exit(1);}
-	if (listen(serverfd, 10000) < 0) {printf(err "Listen error\n"); exit(1);}
+	int backlog = 1024;
+	if (listen(serverfd, backlog) < 0) {printf(err "Listen error\n"); exit(1);}
 
 	
 	//----Server runtime
@@ -36,6 +37,7 @@ int main(int argc, char *argv[]) {
 		//----Server messages
 		//char *hello = (char*)malloc(1000);
 		//char *buffer = (char*)malloc(1000);
+		//above doesn't work
 		char hello[1024] = {0};
 		char buffer[1024] = {0};
 
@@ -45,8 +47,8 @@ int main(int argc, char *argv[]) {
 		
 		int readret = read(acceptret, buffer, 1000);
 		if (readret != 0) {
-			printf("[muhammad] " "%s", buffer);
-			printf("[abdullah] "); 
+			printf("\033[0;32m[client]\033[0m %s", buffer);
+			printf("\033[0;34m[server]\033[0m "); 
 			fgets(hello, sizeof(hello), stdin);
 			send(acceptret, hello, sizeof(hello), 0);
 			//printf(ack "Read: %d\n", readret);

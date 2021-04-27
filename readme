@@ -1,0 +1,2 @@
+A minimalist implementation of a realtime chat between a server & client -- at the terminal.
+for i in {1..4}; do d c client.c ; done

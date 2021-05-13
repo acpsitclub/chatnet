@@ -1,1 +1,0 @@
-/home/midn/lib-cpython-builtins/libcpyb.h

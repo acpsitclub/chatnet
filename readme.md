@@ -5,6 +5,10 @@ A network of clients communicating under a common protocol.
 # Usage
 In the example below, *Muhammad* and *AbdurRahman* are two users located far apart. The commands are arranged in such way that describes the process best. But, as we work to make better, most of the processes will run in background - at will of Allah.
 ```
+Muhammad $ ./chatnet boot
+
+AbdurRahman $ ./chatnet boot
+
 Muhammad $ ./chatnet anyconnreq
 [Info] No connection requests.
 
@@ -44,8 +48,11 @@ Server/Host of the protocol is one file: `net.php`. Clients send JSON to `net.ph
 
 If none of the commands are specified in `msgText`, host considers the JSON as a send of message to specified `uRecv`.
 
-### Source Code
-- `libcpyb.h` is a [dependency-library](https://github.com/midnqp/lib-cpython-builtins), containing useful functions and macros in C.
+### Source Code: Build
+- `libcpyb.h` is a [dependency-library](https://github.com/midnqp/lib-cpython-builtins), containing useful functions and macros in C. Clone that repository, and create a symlink to this project's root named `libcpyb.h`.
+- `libcurl.a` and `libcjson.a` are statically compiled libraries, with copyrights to respective authors.
+- To build, run: `./make chatnet.c`
+- Upon building, a new directory is created named `chatnet_role_change` with the executable copied, which will be of help for testing i.e. chatting with yourself.
 
 ### TODO List
 - Random `CHATNET` ASCII art.

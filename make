@@ -75,7 +75,7 @@ main() {
 		else echo "$err Program not compiled"
 		fi
 	else
-		echo "$err Program name missig"
+		echo "$err Program name missing"
 		exit
 		compile
 		
